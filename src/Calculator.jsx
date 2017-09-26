@@ -15,16 +15,26 @@ const Wrapper = styled.div`
   box-shadow: 0px 0px 20px 0px #aaa;
 `;
 
+const operations = {
+  '/': (prevValue, nextValue) => prevValue / nextValue,
+  '*': (prevValue, nextValue) => prevValue * nextValue,
+  '+': (prevValue, nextValue) => prevValue + nextValue,
+  '-': (prevValue, nextValue) => prevValue - nextValue,
+  '=': (prevValue, nextValue) => nextValue,
+};
+
 class Calculator extends Component {
   state = {
-    currentValue: '0',
+    displayValue: '0',
     buffer: null,
     currentOperator: null,
     waitingOperand: false,
   };
 
   setOperator = (operator) => {
-    if (this.state.currentOperator !== operator && this.state.waitingOperand) {
+    const { buffer, displayValue, currentOperator, waitingOperand } = this.state;
+
+    if (currentOperator !== operator && waitingOperand) {
       this.setState({
         currentOperator: operator,
       });
@@ -32,92 +42,88 @@ class Calculator extends Component {
       return;
     }
 
-    if (this.state.currentOperator !== null) this.calculate();
-
-    if (this.state.buffer === null) {
+    if (buffer == null) {
       this.setState({
-        buffer: parseFloat(this.state.currentValue),
+        buffer: parseFloat(displayValue),
+      });
+    } else if (currentOperator) {
+      const currentValue = buffer || 0;
+      const newValue = operations[currentOperator](currentValue, parseFloat(displayValue));
+
+      this.setState({
+        buffer: newValue,
+        displayValue: String(newValue),
       });
     }
 
     this.setState({
-      currentOperator: operator,
       waitingOperand: true,
+      currentOperator: operator,
     });
   };
 
-  calculate = () => {
-    let result;
-    switch (this.state.currentOperator) {
-      // eslint-disable-next-line no-case-declarations
-      case '+':
-        result = this.state.buffer + parseFloat(this.state.currentValue);
-        break;
-      case '-':
-        result = this.state.buffer - parseFloat(this.state.currentValue);
-        break;
-      case '*':
-        result = this.state.buffer * parseFloat(this.state.currentValue);
-        break;
-      case '/':
-        result = this.state.buffer / parseFloat(this.state.currentValue);
-        break;
-
-      default:
-        break;
-    }
-
+  clearAll = () => {
     this.setState({
-      buffer: result,
-      currentValue: String(result),
-    });
-  };
-
-  resetState = () => {
-    this.setState({
-      currentValue: '0',
+      displayValue: '0',
       buffer: null,
       currentOperator: null,
       waitingOperand: false,
     });
   };
 
-  handleDigitClick = (digit) => {
-    if (this.state.waitingOperand) {
+  clearDisplay = () => {
+    this.setState({
+      displayValue: '0',
+    });
+  };
+
+  digitClick = (digit) => {
+    const { waitingOperand, displayValue } = this.state;
+
+    if (waitingOperand) {
       this.setState({
-        currentValue: String(digit),
+        displayValue: String(digit),
         waitingOperand: false,
       });
     } else {
       this.setState({
-        currentValue:
-          this.state.currentValue === '0' ? String(digit) : this.state.currentValue + digit,
+        displayValue: displayValue === '0' ? String(digit) : displayValue + digit,
       });
     }
   };
 
   inputDot = () => {
-    if (!/\./.test(this.state.currentValue)) {
+    const { displayValue } = this.state;
+
+    if (!/\./.test(displayValue)) {
       this.setState({
-        currentValue: `${this.state.currentValue}.`,
+        displayValue: `${displayValue}.`,
         waitingOperand: false,
       });
     }
   };
 
   toggleSign = () => {
+    const { displayValue } = this.state;
+    const newDisplayValue = parseFloat(displayValue) * -1;
+
     this.setState({
-      currentValue: String(parseFloat(this.state.currentValue) * -1),
+      displayValue: String(newDisplayValue),
     });
   };
 
   render() {
+    const { displayValue } = this.state;
+    const isDisplayClear = displayValue === '0';
+
     return (
       <Wrapper>
-        <Display value={this.state.currentValue} />
+        <Display displayValue={displayValue} />
         <Keyboard
-          resetState={this.resetState}
-          handleDigitClick={this.handleDigitClick}
+          isDisplayClear={isDisplayClear}
+          clearDisplay={this.clearDisplay}
+          clearAll={this.clearAll}
+          digitClick={this.digitClick}
           setOperator={this.setOperator}
           inputDot={this.inputDot}
           calculate={this.calculate}

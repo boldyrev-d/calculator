@@ -15,15 +15,11 @@ const ButtonStyled = styled.div`
   // border: 1px solid #888;
 `;
 
-export const Button = (props) => {
-  const { value, handleClick, isWide, color } = props;
-
-  return (
-    <ButtonStyled isWide={isWide} color={color} onClick={handleClick}>
-      {value}
-    </ButtonStyled>
-  );
-};
+export const Button = ({ value, handleClick, isWide, color }) => (
+  <ButtonStyled isWide={isWide} color={color} onClick={handleClick}>
+    {value}
+  </ButtonStyled>
+);
 
 Button.propTypes = {
   value: PropTypes.string.isRequired,
@@ -37,20 +33,16 @@ Button.defaultProps = {
   color: '',
 };
 
-export const DigitButton = (props) => {
-  const { value, handleClick, isWide, color } = props;
-
-  return (
-    <Button
-      isWide={isWide}
-      color={color}
-      value={value}
-      handleClick={() => {
-        handleClick(value);
-      }}
-    />
-  );
-};
+export const DigitButton = ({ value, handleClick, isWide, color }) => (
+  <Button
+    isWide={isWide}
+    color={color}
+    value={value}
+    handleClick={() => {
+      handleClick(value);
+    }}
+  />
+);
 
 DigitButton.propTypes = {
   value: PropTypes.string.isRequired,

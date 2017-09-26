@@ -13,14 +13,10 @@ const DisplayStyled = styled.div`
   // font-size: 0.8em;
 `;
 
-const Display = (props) => {
-  const { value } = props;
-
-  return <DisplayStyled>{value}</DisplayStyled>;
-};
+const Display = ({ displayValue }) => <DisplayStyled>{displayValue}</DisplayStyled>;
 
 Display.propTypes = {
-  value: PropTypes.string.isRequired,
+  displayValue: PropTypes.string.isRequired,
 };
 
 export default Display;
