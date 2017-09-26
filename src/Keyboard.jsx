@@ -19,21 +19,22 @@ const Keyboard = ({
 }) => (
   <Wrapper>
     <Button
-      color="#d6d6d6"
+      bgColor="#d6d6d6"
       value={isDisplayClear ? 'AC' : 'C'}
       handleClick={isDisplayClear ? clearAll : clearDisplay}
     />
     <Button
-      color="#d6d6d6"
-      value="+/-"
+      bgColor="#d6d6d6"
+      value="±"
       handleClick={() => {
         toggleSign();
       }}
     />
-    <Button color="#d6d6d6" value="%" handleClick={() => {}} />
+    <Button bgColor="#d6d6d6" value="%" handleClick={() => {}} />
     <Button
-      color="#ea9749"
-      value="/"
+      bgColor="#ea9749"
+      color="#fff"
+      value="÷"
       handleClick={() => {
         setOperator('/');
       }}
@@ -42,8 +43,9 @@ const Keyboard = ({
     <DigitButton value="8" handleClick={digitClick} />
     <DigitButton value="9" handleClick={digitClick} />
     <Button
-      color="#ea9749"
-      value="*"
+      bgColor="#ea9749"
+      color="#fff"
+      value="×"
       handleClick={() => {
         setOperator('*');
       }}
@@ -52,8 +54,9 @@ const Keyboard = ({
     <DigitButton value="5" handleClick={digitClick} />
     <DigitButton value="6" handleClick={digitClick} />
     <Button
-      color="#ea9749"
-      value="-"
+      bgColor="#ea9749"
+      color="#fff"
+      value="—"
       handleClick={() => {
         setOperator('-');
       }}
@@ -61,11 +64,12 @@ const Keyboard = ({
     <DigitButton value="1" handleClick={digitClick} />
     <DigitButton value="2" handleClick={digitClick} />
     <DigitButton value="3" handleClick={digitClick} />
-    <Button color="#ea9749" value="+" handleClick={() => setOperator('+')} />
+    <Button bgColor="#ea9749" color="#fff" value="+" handleClick={() => setOperator('+')} />
     <DigitButton isWide value="0" handleClick={digitClick} />
     <Button value="," handleClick={inputDot} />
     <Button
-      color="#ea9749"
+      bgColor="#ea9749"
+      color="#fff"
       value="="
       handleClick={() => {
         setOperator('=');
