@@ -12,8 +12,15 @@ const ButtonStyled = styled.div`
   background-color: ${props => (props.bgColor ? props.bgColor : 'transparent')};
   color: ${props => (props.color ? props.color : 'inherit')};
   min-height: 90px;
+  user-select: none;
   cursor: pointer;
-  // border: 1px solid #888;
+  border-top: 1px solid #8d8d8d;
+  border-right: 1px solid #8d8d8d;
+
+  &:nth-child(4n),
+  &:last-child {
+    border-right: none;
+  }
 `;
 
 export const Button = ({ value, handleClick, isWide, bgColor, color }) => (
