@@ -26,38 +26,55 @@ class Calculator extends Component {
   };
 
   setOperator = (operator) => {
-    if (this.state.currentOperator !== false) this.calculate();
+    if (this.state.currentOperator === operator && this.state.waitingOperand === true) return;
+
+    if (this.state.currentOperator !== null) this.calculate();
+
+    if (this.state.buffer === null) {
+      this.setState({
+        buffer: parseFloat(this.state.currentValue),
+      });
+    }
 
     this.setState({
       currentOperator: operator,
+      waitingOperand: true,
     });
   };
 
   calculate = () => {
-    if (this.state.buffer === 0) {
-      this.setState({
-        buffer: this.state.currentValue,
-      });
-    } else {
-      switch (this.state.currentOperator) {
-        // eslint-disable-next-line no-case-declarations
-        case '+':
-          const result = +this.state.buffer + +this.state.currentValue;
-          this.setState({
-            buffer: result,
-            currentValue: result,
-          });
-          break;
+    let result;
+    switch (this.state.currentOperator) {
+      // eslint-disable-next-line no-case-declarations
+      case '+':
+        result = this.state.buffer + parseFloat(this.state.currentValue);
+        break;
+      case '-':
+        result = this.state.buffer - parseFloat(this.state.currentValue);
+        break;
+      case '*':
+        result = this.state.buffer * parseFloat(this.state.currentValue);
+        break;
+      case '/':
+        result = this.state.buffer / parseFloat(this.state.currentValue);
+        break;
 
-        default:
-          break;
-      }
+      default:
+        break;
     }
+
+    this.setState({
+      buffer: result,
+      currentValue: String(result),
+    });
   };
 
   resetState = () => {
     this.setState({
       currentValue: '0',
+      buffer: null,
+      currentOperator: null,
+      waitingOperand: false,
     });
   };
 

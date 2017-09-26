@@ -16,15 +16,33 @@ const Keyboard = (props) => {
       <Button color="#d6d6d6" value="AC" handleClick={resetState} />
       <Button color="#d6d6d6" value="+/-" handleClick={() => {}} />
       <Button color="#d6d6d6" value="%" handleClick={() => {}} />
-      <Button color="#ea9749" value="/" handleClick={() => {}} />
+      <Button
+        color="#ea9749"
+        value="/"
+        handleClick={() => {
+          setOperator('/');
+        }}
+      />
       <DigitButton value="7" handleClick={handleDigitClick} />
       <DigitButton value="8" handleClick={handleDigitClick} />
       <DigitButton value="9" handleClick={handleDigitClick} />
-      <Button color="#ea9749" value="*" handleClick={() => {}} />
+      <Button
+        color="#ea9749"
+        value="*"
+        handleClick={() => {
+          setOperator('*');
+        }}
+      />
       <DigitButton value="4" handleClick={handleDigitClick} />
       <DigitButton value="5" handleClick={handleDigitClick} />
       <DigitButton value="6" handleClick={handleDigitClick} />
-      <Button color="#ea9749" value="-" handleClick={() => {}} />
+      <Button
+        color="#ea9749"
+        value="-"
+        handleClick={() => {
+          setOperator('-');
+        }}
+      />
       <DigitButton value="1" handleClick={handleDigitClick} />
       <DigitButton value="2" handleClick={handleDigitClick} />
       <DigitButton value="3" handleClick={handleDigitClick} />
