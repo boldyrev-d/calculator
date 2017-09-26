@@ -24,7 +24,13 @@ class Calculator extends Component {
   };
 
   setOperator = (operator) => {
-    if (this.state.currentOperator === operator && this.state.waitingOperand === true) return;
+    if (this.state.currentOperator !== operator && this.state.waitingOperand) {
+      this.setState({
+        currentOperator: operator,
+      });
+
+      return;
+    }
 
     if (this.state.currentOperator !== null) this.calculate();
 
