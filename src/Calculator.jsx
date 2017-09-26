@@ -19,9 +19,10 @@ const Wrapper = styled.div`
 
 class Calculator extends Component {
   state = {
-    currentValue: 0,
-    currentOperator: false,
-    buffer: 0,
+    currentValue: '0',
+    buffer: null,
+    currentOperator: null,
+    waitingOperand: false,
   };
 
   setOperator = (operator) => {
@@ -56,17 +57,31 @@ class Calculator extends Component {
 
   resetState = () => {
     this.setState({
-      currentValue: 0,
+      currentValue: '0',
     });
   };
 
   handleDigitClick = (digit) => {
-    this.setState({
-      currentValue:
-        this.state.currentValue === 0 || this.state.currentOperator
-          ? digit
-          : this.state.currentValue + digit,
-    });
+    if (this.state.waitingOperand) {
+      this.setState({
+        currentValue: String(digit),
+        waitingOperand: false,
+      });
+    } else {
+      this.setState({
+        currentValue:
+          this.state.currentValue === '0' ? String(digit) : this.state.currentValue + digit,
+      });
+    }
+  };
+
+  inputDot = () => {
+    if (!/\./.test(this.state.currentValue)) {
+      this.setState({
+        currentValue: `${this.state.currentValue}.`,
+        waitingOperand: false,
+      });
+    }
   };
 
   render() {
@@ -77,6 +92,7 @@ class Calculator extends Component {
           resetState={this.resetState}
           handleDigitClick={this.handleDigitClick}
           setOperator={this.setOperator}
+          inputDot={this.inputDot}
         />
       </Wrapper>
     );

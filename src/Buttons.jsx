@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ButtonStyled = styled.div`
@@ -25,10 +25,10 @@ export const Button = (props) => {
   );
 };
 
-// Button.propTypes = {
-//   value: PropTypes.string.isRequired,
-//   handleClick: PropTypes.func.isRequired,
-// };
+Button.propTypes = {
+  value: PropTypes.string.isRequired,
+  // handleClick: PropTypes.func.isRequired,
+};
 
 export const DigitButton = (props) => {
   const { value, handleClick, isWide, color } = props;
@@ -45,7 +45,7 @@ export const DigitButton = (props) => {
   );
 };
 
-// DigitButton.propTypes = {
-//   value: PropTypes.string.isRequired,
-//   handleClick: PropTypes.func.isRequired,
-// };
+DigitButton.propTypes = {
+  value: PropTypes.string.isRequired,
+  // handleClick: PropTypes.func.isRequired,
+};

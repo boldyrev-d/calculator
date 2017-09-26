@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 `;
 
 const Keyboard = (props) => {
-  const { resetState, handleDigitClick, setOperator } = props;
+  const { resetState, handleDigitClick, setOperator, inputDot } = props;
 
   return (
     <Wrapper>
@@ -30,7 +30,7 @@ const Keyboard = (props) => {
       <DigitButton value="3" handleClick={handleDigitClick} />
       <Button color="#ea9749" value="+" handleClick={() => setOperator('+')} />
       <DigitButton isWide value="0" handleClick={handleDigitClick} />
-      <Button value="." handleClick={() => {}} />
+      <Button value="," handleClick={inputDot} />
       <Button color="#ea9749" value="=" handleClick={() => {}} />
     </Wrapper>
   );
