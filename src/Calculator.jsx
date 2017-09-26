@@ -6,8 +6,8 @@ import Keyboard from './Keyboard';
 const Wrapper = styled.div`
   width: 470px;
   height: 600px;
-  font-size: 48px;
-  font-family: monospace;
+  font-size: 40px;
+  font-family: 'Roboto', sans-serif;
   border: 1px solid #8d8d8d;
   border-radius: 10px;
   background-color: #e0e0e0;
