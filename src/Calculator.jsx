@@ -101,6 +101,12 @@ class Calculator extends Component {
     }
   };
 
+  toggleSign = () => {
+    this.setState({
+      currentValue: String(parseFloat(this.state.currentValue) * -1),
+    });
+  };
+
   render() {
     return (
       <Wrapper>
@@ -110,6 +116,8 @@ class Calculator extends Component {
           handleDigitClick={this.handleDigitClick}
           setOperator={this.setOperator}
           inputDot={this.inputDot}
+          calculate={this.calculate}
+          toggleSign={this.toggleSign}
         />
       </Wrapper>
     );

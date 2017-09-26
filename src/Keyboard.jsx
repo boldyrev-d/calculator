@@ -9,12 +9,18 @@ const Wrapper = styled.div`
 `;
 
 const Keyboard = (props) => {
-  const { resetState, handleDigitClick, setOperator, inputDot } = props;
+  const { resetState, handleDigitClick, setOperator, inputDot, calculate, toggleSign } = props;
 
   return (
     <Wrapper>
       <Button color="#d6d6d6" value="AC" handleClick={resetState} />
-      <Button color="#d6d6d6" value="+/-" handleClick={() => {}} />
+      <Button
+        color="#d6d6d6"
+        value="+/-"
+        handleClick={() => {
+          toggleSign();
+        }}
+      />
       <Button color="#d6d6d6" value="%" handleClick={() => {}} />
       <Button
         color="#ea9749"
@@ -49,7 +55,13 @@ const Keyboard = (props) => {
       <Button color="#ea9749" value="+" handleClick={() => setOperator('+')} />
       <DigitButton isWide value="0" handleClick={handleDigitClick} />
       <Button value="," handleClick={inputDot} />
-      <Button color="#ea9749" value="=" handleClick={() => {}} />
+      <Button
+        color="#ea9749"
+        value="="
+        handleClick={() => {
+          calculate();
+        }}
+      />
     </Wrapper>
   );
 };
