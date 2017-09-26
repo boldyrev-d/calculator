@@ -3,49 +3,19 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Display from './Display';
+import Keyboard from './Keyboard';
 
-const Calc = styled.div`
-  width: 400px;
-  height: 500px;
+const Wrapper = styled.div`
+  width: 470px;
+  height: 600px;
   font-size: 48px;
   font-family: monospace;
   border: 1px solid #8d8d8d;
   border-radius: 10px;
+  background-color: #e0e0e0;
   overflow: hidden;
+  box-shadow: 0px 0px 20px 0px #aaa;
 `;
-
-const Buttons = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const ButtonStyled = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-basis: 25%;
-  cursor: pointer;
-  // border: 1px solid #888;
-  // box-sizing: border-box;
-`;
-
-const Button = (props) => {
-  const { title, handleClick } = props;
-  return <ButtonStyled onClick={handleClick}>{title}</ButtonStyled>;
-};
-
-const DigitButton = (props) => {
-  const { digit, handleClick } = props;
-
-  return (
-    <Button
-      handleClick={() => {
-        handleClick(digit);
-      }}
-      title={digit}
-    />
-  );
-};
 
 class Calculator extends Component {
   state = {
@@ -101,25 +71,14 @@ class Calculator extends Component {
 
   render() {
     return (
-      <Calc>
+      <Wrapper>
         <Display value={this.state.currentValue} />
-        <Buttons>
-          <Button title="AC" handleClick={this.resetState} />
-          <DigitButton digit="7" handleClick={this.handleDigitClick} />
-          <DigitButton digit="8" handleClick={this.handleDigitClick} />
-          <DigitButton digit="9" handleClick={this.handleDigitClick} />
-          <Button title="+" handleClick={() => this.setOperator('+')} />
-          <DigitButton digit="4" handleClick={this.handleDigitClick} />
-          <DigitButton digit="5" handleClick={this.handleDigitClick} />
-          <DigitButton digit="6" handleClick={this.handleDigitClick} />
-          <DigitButton title="" />
-          <DigitButton digit="1" handleClick={this.handleDigitClick} />
-          <DigitButton digit="2" handleClick={this.handleDigitClick} />
-          <DigitButton digit="3" handleClick={this.handleDigitClick} />
-          <DigitButton title="" />
-          <DigitButton digit="0" handleClick={this.handleDigitClick} />
-        </Buttons>
-      </Calc>
+        <Keyboard
+          resetState={this.resetState}
+          handleDigitClick={this.handleDigitClick}
+          setOperator={this.setOperator}
+        />
+      </Wrapper>
     );
   }
 }
