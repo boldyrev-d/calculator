@@ -27,7 +27,14 @@ export const Button = (props) => {
 
 Button.propTypes = {
   value: PropTypes.string.isRequired,
-  // handleClick: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  isWide: PropTypes.bool,
+  color: PropTypes.string,
+};
+
+Button.defaultProps = {
+  isWide: false,
+  color: '',
 };
 
 export const DigitButton = (props) => {
@@ -47,5 +54,12 @@ export const DigitButton = (props) => {
 
 DigitButton.propTypes = {
   value: PropTypes.string.isRequired,
-  // handleClick: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  isWide: PropTypes.bool,
+  color: PropTypes.string,
+};
+
+DigitButton.defaultProps = {
+  isWide: false,
+  color: '',
 };

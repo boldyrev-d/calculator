@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Button, DigitButton } from './Buttons';
-// import DigitButton from './DigitButton';
 
 const Wrapper = styled.div`
   display: flex;
@@ -64,6 +64,15 @@ const Keyboard = (props) => {
       />
     </Wrapper>
   );
+};
+
+Keyboard.propTypes = {
+  resetState: PropTypes.func.isRequired,
+  handleDigitClick: PropTypes.func.isRequired,
+  setOperator: PropTypes.func.isRequired,
+  inputDot: PropTypes.func.isRequired,
+  calculate: PropTypes.func.isRequired,
+  toggleSign: PropTypes.func.isRequired,
 };
 
 export default Keyboard;
