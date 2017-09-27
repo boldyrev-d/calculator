@@ -1,6 +1,6 @@
 {
-  "name": "test",
-  "version": "0.1.0",
+  "name": "boldyrev-react-calculator",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "normalize.css": "^7.0.0",
@@ -25,6 +25,10 @@
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "7.1.0",
+    "now": "^8.3.7",
     "react-test-renderer": "^15.6.1"
+  },
+  "now": {
+    "alias": "boldyrev-react-calculator"
   }
 }

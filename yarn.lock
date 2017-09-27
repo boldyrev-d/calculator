@@ -4560,6 +4560,10 @@ normalize.css@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-7.0.0.tgz#abfb1dd82470674e0322b53ceb1aaf412938e4bf"
 
+now@^8.3.7:
+  version "8.3.7"
+  resolved "https://registry.yarnpkg.com/now/-/now-8.3.7.tgz#09e0d6dea22f867bba63e6f8067091c69f3e7802"
+
 npm-run-path@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-2.0.2.tgz#35a9232dfa35d7067b4cb2ddf2357b1871536c5f"
