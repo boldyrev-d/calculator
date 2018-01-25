@@ -23,7 +23,9 @@ const ButtonStyled = styled.div`
   }
 `;
 
-export const Button = ({ value, handleClick, isWide, bgColor, color }) => (
+export const Button = ({
+  value, handleClick, isWide, bgColor, color,
+}) => (
   <ButtonStyled isWide={isWide} bgColor={bgColor} color={color} onClick={handleClick}>
     {value}
   </ButtonStyled>
@@ -43,7 +45,9 @@ Button.defaultProps = {
   color: '',
 };
 
-export const DigitButton = ({ value, handleClick, isWide, bgColor, color }) => (
+export const DigitButton = ({
+  value, handleClick, isWide, bgColor, color,
+}) => (
   <Button
     isWide={isWide}
     bgColor={bgColor}

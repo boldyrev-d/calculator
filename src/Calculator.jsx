@@ -32,7 +32,9 @@ class Calculator extends Component {
   };
 
   setOperator = (operator) => {
-    const { buffer, displayValue, currentOperator, waitingOperand } = this.state;
+    const {
+      buffer, displayValue, currentOperator, waitingOperand,
+    } = this.state;
 
     if (currentOperator !== operator && waitingOperand) {
       this.setState({

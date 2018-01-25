@@ -37,12 +37,10 @@ class Display extends Component {
 
   componentDidUpdate() {
     const { scale } = this.state;
-
-    const node = this.node;
-    const parentNode = node.parentNode;
+    const { parentNode } = this.node;
 
     const availableWidth = parentNode.offsetWidth;
-    const actualWidth = node.offsetWidth;
+    const actualWidth = this.node.offsetWidth;
     const actualScale = availableWidth / actualWidth;
 
     if (scale === actualScale) return;
