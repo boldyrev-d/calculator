@@ -23,7 +23,7 @@ const Text = styled.div`
   position: absolute;
   right: 0;
   transform-origin: right;
-  transform: ${props => props.transform};
+  transform: ${({ transform }) => transform};
 `;
 
 class Display extends Component {

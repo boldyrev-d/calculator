@@ -4,13 +4,13 @@ import styled from 'styled-components';
 
 const ButtonStyled = styled.div`
   display: flex;
-  justify-content: ${props => (props.isWide ? 'flex-start' : 'center')};
+  justify-content: ${({ isWide }) => (isWide ? 'flex-start' : 'center')};
   align-items: center;
   box-sizing: border-box;
-  padding-left: ${props => (props.isWide ? '45px' : '0px')};
-  flex-basis: ${props => (props.isWide ? '50%' : '25%')};
-  background-color: ${props => (props.bgColor ? props.bgColor : 'transparent')};
-  color: ${props => (props.color ? props.color : 'inherit')};
+  padding-left: ${({ isWide }) => (isWide ? '45px' : '0px')};
+  flex-basis: ${({ isWide }) => (isWide ? '50%' : '25%')};
+  background-color: ${({ bgColor }) => (bgColor || 'transparent')};
+  color: ${({ color }) => (color || 'inherit')};
   min-height: 90px;
   user-select: none;
   cursor: pointer;
