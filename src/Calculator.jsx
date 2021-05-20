@@ -32,9 +32,8 @@ class Calculator extends Component {
   };
 
   setOperator = (operator) => {
-    const {
-      buffer, displayValue, currentOperator, waitingOperand,
-    } = this.state;
+    const { buffer, displayValue, currentOperator, waitingOperand } =
+      this.state;
 
     if (currentOperator !== operator && waitingOperand) {
       this.setState({
@@ -50,7 +49,10 @@ class Calculator extends Component {
       });
     } else if (currentOperator) {
       const currentValue = buffer || 0;
-      const newValue = operations[currentOperator](currentValue, parseFloat(displayValue));
+      const newValue = operations[currentOperator](
+        currentValue,
+        parseFloat(displayValue),
+      );
 
       this.setState({
         buffer: newValue,
@@ -89,7 +91,8 @@ class Calculator extends Component {
       });
     } else {
       this.setState({
-        displayValue: displayValue === '0' ? String(digit) : displayValue + digit,
+        displayValue:
+          displayValue === '0' ? String(digit) : displayValue + digit,
       });
     }
   };

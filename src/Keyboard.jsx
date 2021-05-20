@@ -64,7 +64,12 @@ const Keyboard = ({
     <DigitButton value="1" handleClick={digitClick} />
     <DigitButton value="2" handleClick={digitClick} />
     <DigitButton value="3" handleClick={digitClick} />
-    <Button bgColor="#ea9749" color="#fff" value="+" handleClick={() => setOperator('+')} />
+    <Button
+      bgColor="#ea9749"
+      color="#fff"
+      value="+"
+      handleClick={() => setOperator('+')}
+    />
     <DigitButton isWide value="0" handleClick={digitClick} />
     <Button value="," handleClick={inputDot} />
     <Button

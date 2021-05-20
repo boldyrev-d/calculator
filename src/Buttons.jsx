@@ -9,8 +9,8 @@ const ButtonStyled = styled.div`
   box-sizing: border-box;
   padding-left: ${({ isWide }) => (isWide ? '45px' : '0px')};
   flex-basis: ${({ isWide }) => (isWide ? '50%' : '25%')};
-  background-color: ${({ bgColor }) => (bgColor || 'transparent')};
-  color: ${({ color }) => (color || 'inherit')};
+  background-color: ${({ bgColor }) => bgColor || 'transparent'};
+  color: ${({ color }) => color || 'inherit'};
   min-height: 90px;
   user-select: none;
   cursor: pointer;
@@ -23,10 +23,13 @@ const ButtonStyled = styled.div`
   }
 `;
 
-export const Button = ({
-  value, handleClick, isWide, bgColor, color,
-}) => (
-  <ButtonStyled isWide={isWide} bgColor={bgColor} color={color} onClick={handleClick}>
+export const Button = ({ value, handleClick, isWide, bgColor, color }) => (
+  <ButtonStyled
+    isWide={isWide}
+    bgColor={bgColor}
+    color={color}
+    onClick={handleClick}
+  >
     {value}
   </ButtonStyled>
 );
@@ -45,9 +48,7 @@ Button.defaultProps = {
   color: '',
 };
 
-export const DigitButton = ({
-  value, handleClick, isWide, bgColor, color,
-}) => (
+export const DigitButton = ({ value, handleClick, isWide, bgColor, color }) => (
   <Button
     isWide={isWide}
     bgColor={bgColor}

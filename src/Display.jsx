@@ -1,5 +1,3 @@
-/* eslint-disable react/no-did-update-set-state */
-
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -46,8 +44,10 @@ class Display extends Component {
     if (scale === actualScale) return;
 
     if (actualScale < 1) {
+      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ scale: actualScale });
     } else if (scale < 1) {
+      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ scale: 1 });
     }
   }
